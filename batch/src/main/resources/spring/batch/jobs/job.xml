@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch
+		http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		">
+
+  <import resource="../config/context.xml" />
+  <import resource="../config/database.xml" />
+
+  <bean id="itemReader"
+	class="org.springframework.batch.item.database.JdbcCursorItemReader"
+	scope="step">
+	<property name="dataSource" ref="dataSource" />
+	<property name="sql"
+		value="SELECT FOLIODET,MOVIMIENTO,CANTIDAD,IDPRODUCTO,DESCUENTO,PRECIO,IMPUESTO,HORA,IDESTACION,HORAPRODUC,IDMESEROPR FROM CHEQDET" />
+	<!-- select ID, USER_LOGIN, USER_PASS, AGE from USERS where age > #{jobParameters['age']} -->
+	<property name="rowMapper">
+		<bean class=" mx.com.mccarthys.batch.mappers.ComandaRowMapper" />
+	</property>
+  </bean>
+
+  <job id="mccarthysJob" xmlns="http://www.springframework.org/schema/batch">
+	<step id="step1">
+	  <tasklet>
+		<chunk reader="pagingItemReader" writer="itemWriter"
+			commit-interval="1" />
+	  </tasklet>
+	</step>
+  </job>
+
+  <bean id="itemWriter" class="org.springframework.batch.item.xml.StaxEventItemWriter">
+	<property name="resource" value="file:xml/outputs/comandas.xml" />
+	<property name="marshaller" ref="comandaUnmarshaller" />
+	<property name="rootTagName" value="comandas" />
+  </bean>
+
+  <bean id="comandaUnmarshaller" class="org.springframework.oxm.xstream.XStreamMarshaller">
+	<property name="aliases">
+		<util:map id="aliases">
+			<entry key="comanda" value="mx.com.mccarthys.batch.model.Comanda" />
+		</util:map>
+	</property>
+  </bean>
+</beans>
