@@ -16,14 +16,14 @@ public class ComandaRowMapper  implements RowMapper<Comanda>{
 		comanda.setFoliodet(rs.getLong("foliodet"));
 		comanda.setMovimiento(rs.getLong("movimiento"));
 		comanda.setCantidad(rs.getInt("cantidad"));
-		comanda.setIdProducto(rs.getInt("idProducto"));
+		comanda.setIdProducto(rs.getString("idProducto"));
 		comanda.setDescuento(rs.getFloat("descuento"));
 		comanda.setPrecio(rs.getFloat("precio"));
 		comanda.setImpuesto(rs.getFloat("impuesto"));
 		comanda.setHora(rs.getDate("hora"));
 		comanda.setIdestacion(rs.getString("idestacion"));
 		comanda.setHoraproduc(rs.getDate("horaproduc"));
-		comanda.setIdmeseropr(rs.getInt("idmeseropr"));
+		comanda.setIdmeseropr(rs.getString("idmeseropr"));
 		
 		return comanda;
 	}

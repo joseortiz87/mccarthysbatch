@@ -9,8 +9,8 @@
     <!-- connect to database -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="net.sourceforge.jtds.jdbc.Driver" />
-		<property name="url" value="jdbc:jtds:sqlserver://localhost:1433;databaseName=softrestaurant9pro;domain=myDomain;integrated security=false" />
+		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+		<property name="url" value="jdbc:sqlserver://JOSEORTIZ87:1433;instanceName=NATIONALSOFT;databaseName=softrestaurant9pro;integratedSecurity=false" />
 		<property name="username" value="sa" />
 		<property name="password" value="National09" />
 	</bean>

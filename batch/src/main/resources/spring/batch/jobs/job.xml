@@ -19,7 +19,7 @@
 	scope="step">
 	<property name="dataSource" ref="dataSource" />
 	<property name="sql"
-		value="SELECT FOLIODET,MOVIMIENTO,CANTIDAD,IDPRODUCTO,DESCUENTO,PRECIO,IMPUESTO,HORA,IDESTACION,HORAPRODUC,IDMESEROPR FROM CHEQDET" />
+		value="SELECT FOLIODET,MOVIMIENTO,CANTIDAD,IDPRODUCTO,DESCUENTO,PRECIO,IMPUESTO1 AS IMPUESTO,HORA,IDESTACION,HORAPRODUCCION AS HORAPRODUC,IDMESEROPRODUCTO AS IDMESEROPR FROM CHEQDET" />
 	<!-- select ID, USER_LOGIN, USER_PASS, AGE from USERS where age > #{jobParameters['age']} -->
 	<property name="rowMapper">
 		<bean class=" mx.com.mccarthys.batch.mappers.ComandaRowMapper" />

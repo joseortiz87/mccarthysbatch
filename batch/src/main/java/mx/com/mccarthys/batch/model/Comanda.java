@@ -5,14 +5,14 @@ public class Comanda {
 	private long foliodet;
 	private long movimiento;
 	private int cantidad;
-	private int idProducto;
+	private String idProducto;
 	private float descuento;
 	private float precio;
 	private float impuesto;
 	private java.util.Date hora;
 	private String idestacion;
 	private java.util.Date horaproduc;
-	private int idmeseropr;
+	private String idmeseropr;
 	public int getIdPuntoVenta() {
 		return idPuntoVenta;
 	}
@@ -37,10 +37,10 @@ public class Comanda {
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
-	public int getIdProducto() {
+	public String getIdProducto() {
 		return idProducto;
 	}
-	public void setIdProducto(int idProducto) {
+	public void setIdProducto(String idProducto) {
 		this.idProducto = idProducto;
 	}
 	public float getDescuento() {
@@ -79,10 +79,10 @@ public class Comanda {
 	public void setHoraproduc(java.util.Date horaproduc) {
 		this.horaproduc = horaproduc;
 	}
-	public int getIdmeseropr() {
+	public String getIdmeseropr() {
 		return idmeseropr;
 	}
-	public void setIdmeseropr(int idmeseropr) {
+	public void setIdmeseropr(String idmeseropr) {
 		this.idmeseropr = idmeseropr;
 	}
 }
